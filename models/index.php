@@ -6,6 +6,7 @@ class IndexModel {
     private $conn;
     
     public function __construct() {
+        global $conn;
         $this->conn = $conn;
     }
     
@@ -14,8 +15,10 @@ class IndexModel {
         
         $result = mysqli_query($this->conn, $sql);
         
-        $items = mysqli_fetch_array($result);
-        
+        $items = [];
+        while($row = mysqli_fetch_object($result)) {
+            $items[] = $row;
+        }
         return $items;
     }
 }

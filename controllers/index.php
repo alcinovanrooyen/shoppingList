@@ -14,7 +14,7 @@ class Index
     }
     
     private function getShoppingList() {
-        
+        $this->slItems = $this->model->index();
     }
 }
 
