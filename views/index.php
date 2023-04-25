@@ -17,7 +17,7 @@
         <script>
             function addItem(button) {
                 const   slItem = document.createElement('div'),
-                        slItemInner = `<input type="text">
+                        slItemInner = `<input type="text" name="names[]">
                                     <button class="sl_cancel" onclick="cancel(this)">cancel</span>`;
                 
                 slItem.innerHTML = slItemInner;
@@ -35,11 +35,11 @@
             <div class="sl_name">
                 <span>Shopping List</span>
             </div>
-            <form action="index.php">
+            <form action="index.php?route=save" method="post">
                 <?php if ($this->slItems) 
-                    foreach($this->slItems as $key => $slItem) {
+                    foreach($this->slItems as $slItem) {
                         ?>
-                            <div><?=($key+1)?>. <span> <?=$slItem?> </span></div>
+                            <div><?=$slItem->item_id?>. <span> <?=$slItem->item_title?> </span></div>
                         <?php
                     }
                 ?>
